@@ -2,6 +2,7 @@ const HOME = "/";
 const DETAIL = "/:id";
 const JOIN = "/join";
 const LOGIN = "/login";
+const LOGOUT = "/logout";
 const SEARCH = "/search";
 const USER = "/user";
 const LIKE = "/like";
@@ -12,11 +13,13 @@ const ADD = "/add";
 const EDIT = "/edit";
 const NOTIFICATION = "/notification";
 const CHAT = "/chat";
+const MANAGE = "/manage";
 
 const routes = {
   home: HOME,
   join: JOIN,
   login: LOGIN,
+  logout: LOGOUT,
   user: USER,
   search: SEARCH,
   house_detail: HOUSE + DETAIL,
@@ -28,7 +31,8 @@ const routes = {
   house_recent: LIKE + HOUSE + RECENT,
   office_recent: LIKE + OFFICE + RECENT,
   notification: NOTIFICATION,
-  chat: NOTIFICATION + CHAT
+  chat: NOTIFICATION + CHAT,
+  manage: MANAGE
 };
 
 export default routes;
