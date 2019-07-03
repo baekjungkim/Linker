@@ -1,0 +1,8 @@
+mixin placeBlock(place = {})
+	.placeBlock
+		a(href=routes.placeDetail(place.id))
+			div.placeBlock__div__thumbnail
+				img.placeBlock__thumbnail(src=place.fileUrl)
+			p.placeBLock__title=place.title
+			p.placeBLock__description=place.description
+			p.placeBlock__views=place.views

@@ -13,10 +13,10 @@ header.header
 				li
 					a(href=routes.login) Log In
 				li
-					a(href=routes.manage) 공간 올리기
+					a(href=`${routes.place}${routes.manage}`) 공간 관리
 			else 
 				li
-					a(href=routes.manage) 공간 올리기
+					a(href=`${routes.place}${routes.manage}`) 공간 관리
 				li
 					a(href=routes.user) 정보수정
 				li

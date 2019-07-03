@@ -1,3 +1,4 @@
+import multer from "multer";
 import routes from "./routes";
 
 export const localMiddleware = (req, res, next) => {
@@ -9,3 +10,6 @@ export const localMiddleware = (req, res, next) => {
   };
   next();
 };
+
+const multerPlace = multer({ dest: "uploads/place/" });
+export const placeUpload = multerPlace.array("placeFile");

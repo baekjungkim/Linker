@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import { localMiddleware } from "./middlewares";
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
+import placeRouter from "./routers/placeRouter";
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use(logger("dev"));
 app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
+app.use(routes.place, placeRouter);
 
 export default app;

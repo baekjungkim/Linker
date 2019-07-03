@@ -1,0 +1,32 @@
+extends ../layouts/main
+include ../mixins/selectBlock
+
+block content
+	include ../partials/manageHeader
+	.form-container
+		form(action=`${routes.place}${routes.placeAdd}`, method="post", enctype="multipart/form-data")
+			label(for="file") File
+			input(type="file", id="file", name="placeFile", required=true, accept="video/*, image/*" multiple)
+			label(for="title") Title
+			input(type="text", id="title", name="title", placeholder="Title", required=true)
+			label(for="description") Description
+			textarea(name="description", id="description", placeholder="Description")
+			label(for="lat") Latitude
+			input(type="number", id="lat" name="lat", placeholder="Latitude", required=true)
+			label(for="lng") Longitude
+			input(type="number", id="lng" name="lng", placeholder="Longitude", required=true)
+			label(for="type") Type
+			select(id="type", name="type", required=true)
+				each val, index in {1: "APT", 2: "HOUSE"}
+					+selectBlock({
+						id: index,
+						name: val
+					})
+			label(for="category") Category
+			select(id="category", name="category", required=true)
+				each val, index in {1: "HOUSE", 2: "OFFICE"}
+					+selectBlock({
+						id: index,
+						name: val
+					})
+			input(type="submit", value="Upload Video")

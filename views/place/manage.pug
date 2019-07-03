@@ -1,0 +1,15 @@
+extends ../layouts/main
+include ../mixins/placeBlock
+
+block content
+	include ../partials/manageHeader
+	.manage__place
+		each item in places
+			+placeBlock({
+				fileUrl: item.FileUrl,
+				title: item.title,
+				description: item.description,
+				views: item.views
+			})
+	
+		

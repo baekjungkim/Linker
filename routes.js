@@ -1,18 +1,24 @@
+// Global
 const HOME = "/";
-const DETAIL = "/:id";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
+
+// User
 const USER = "/user";
-const LIKE = "/like";
-const RECENT = "/recent";
-const HOUSE = "/house";
-const OFFICE = "/office";
-const ADD = "/add";
-const EDIT = "/edit";
+const USER_DETAIL = "/:id";
+const USER_EDIT = "/edit";
 const NOTIFICATION = "/notification";
 const CHAT = "/chat";
+
+// Place
+const PLACE = "/place";
+const PLACE_LIKE = "/like";
+const PLACE_RECENT = "/recent";
+const PLACE_ADD = "/add";
+const PLACE_DETAIL = "/:id";
+const PLACE_EDIT = "/edit/:id";
 const MANAGE = "/manage";
 
 const routes = {
@@ -20,18 +26,24 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
-  user: USER,
   search: SEARCH,
-  house_detail: HOUSE + DETAIL,
-  office_detail: OFFICE + DETAIL,
-  house_add: HOUSE + ADD,
-  office_add: OFFICE + ADD,
-  house_edit: HOUSE + DETAIL + EDIT,
-  office_edit: OFFICE + DETAIL + EDIT,
-  house_recent: LIKE + HOUSE + RECENT,
-  office_recent: LIKE + OFFICE + RECENT,
+  user: USER,
+  userDetail: USER_DETAIL,
+  userEdit: USER_EDIT,
   notification: NOTIFICATION,
-  chat: NOTIFICATION + CHAT,
+  chat: CHAT,
+  place: PLACE,
+  placeLike: PLACE_LIKE,
+  placeRecent: PLACE_RECENT,
+  placeAdd: PLACE_ADD,
+  placeDetail: id => {
+    if (id) {
+      return PLACE + `${id}`;
+    } else {
+      return PLACE_DETAIL;
+    }
+  },
+  placeEdit: PLACE_EDIT,
   manage: MANAGE
 };
 
