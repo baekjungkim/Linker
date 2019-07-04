@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
+app.use("/dist", express.static("dist"));
+
 app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);

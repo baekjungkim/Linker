@@ -4,9 +4,7 @@ include ../mixins/selectBlock
 block content
 	include ../partials/manageHeader
 	.form-container
-		form(action=`${routes.place}${routes.placeAdd}`, method="post", enctype="multipart/form-data")
-			label(for="file") File
-			input(type="file", id="file", name="placeFile", required=true, accept="video/*, image/*" multiple)
+		form(action=`${routes.place}${routes.placeAdd}`, id="placeAddForm", method="post")
 			label(for="title") Title
 			input(type="text", id="title", name="title", placeholder="Title", required=true)
 			label(for="description") Description
@@ -29,4 +27,42 @@ block content
 						id: index,
 						name: val
 					})
-			input(type="submit", value="Upload Video")
+	.form-container--upload
+		label FileUpload
+		form.dropzone(action="/", id="placeFileForm" method="post", enctype="multipart/form-data")
+			.fallback
+				input(type="file", name="placeFile[]", multiple)
+
+	.form-container--submit
+		input(type="submit", value="Upload Video", id="placeAdd")
+
+	script(src="/dist/dropzone/dropzone.js")
+	script(src="/dist/jquery/jquery-3.4.1.min.js")
+	style
+		include ../../dist/dropzone/dropzone.css
+	script.
+		Dropzone.autoDiscover = false;
+		Dropzone.options.placeFileForm = {
+			//- parallelUploads: 5,
+			uploadMultiple: true,
+			maxFiles: 5,
+			maxFilesize: 100, // MB
+			autoProcessQueue: false,
+			addRemoveLinks: true,
+			acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF, .mp4"
+		};
+
+		const myDropzone = new Dropzone("form#placeFileForm", {
+			url: "/place/file-upload",
+			method:"post",
+			paramName: () => { return "placeFile[]"; }
+		})
+
+		$("#placeAdd").click(() => {
+			myDropzone.processQueue()
+			myDropzone.on("completemultiple", () => {
+				$("#placeAddForm").submit()
+			})
+		})
+
+		

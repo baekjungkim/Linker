@@ -19,6 +19,7 @@ const PLACE_RECENT = "/recent";
 const PLACE_ADD = "/add";
 const PLACE_DETAIL = "/:id";
 const PLACE_EDIT = "/edit/:id";
+const PLACE_FILE_UPLOAD = "/file-upload";
 const MANAGE = "/manage";
 
 const routes = {
@@ -36,6 +37,7 @@ const routes = {
   placeLike: PLACE_LIKE,
   placeRecent: PLACE_RECENT,
   placeAdd: PLACE_ADD,
+  placeFileUpload: PLACE_FILE_UPLOAD,
   placeDetail: id => {
     if (id) {
       return PLACE + `${id}`;

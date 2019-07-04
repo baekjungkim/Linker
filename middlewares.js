@@ -1,5 +1,6 @@
 import multer from "multer";
 import routes from "./routes";
+import utils from "./utils";
 
 export const localMiddleware = (req, res, next) => {
   res.locals.siteName = "Linker";
@@ -11,5 +12,7 @@ export const localMiddleware = (req, res, next) => {
   next();
 };
 
-const multerPlace = multer({ dest: "uploads/place/" });
-export const placeUpload = multerPlace.array("placeFile");
+const multerPlace = multer({
+  dest: "uploads/" + utils.dateYYYYMMDD() + "/place/"
+});
+export const placeFile = multerPlace.array("placeFile[]");
