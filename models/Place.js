@@ -11,14 +11,6 @@ const PlaceSchema = new mongoose.Schema({
     required: "Title is required"
   },
   description: String,
-  lat: {
-    type: Number,
-    required: "Latitude is required"
-  },
-  lng: {
-    type: Number,
-    required: "Longitude is required"
-  },
   fileUrl: [
     {
       type: String,
@@ -32,6 +24,30 @@ const PlaceSchema = new mongoose.Schema({
   category: {
     type: String,
     required: "Category is required"
+  },
+  roadAddr: {
+    type: String,
+    required: "Road Address is required"
+  },
+  jibunAddr: {
+    type: String,
+    required: "Address is required"
+  },
+  detailAddr: {
+    type: String,
+    required: "Detail Address is required"
+  },
+  zipNo: {
+    type: Number,
+    required: "Zip Code is required"
+  },
+  lat: {
+    type: Number,
+    required: "Latitude is required"
+  },
+  lng: {
+    type: Number,
+    required: "Longitude is required"
   },
   comments: [
     {

@@ -4,65 +4,87 @@ include ../mixins/selectBlock
 block content
 	include ../partials/manageHeader
 	.form-container
-		form(action=`${routes.place}${routes.placeAdd}`, id="placeAddForm", method="post")
+		form(action=`${routes.place}${routes.placeAdd}` id="placeAddForm" method="post")
 			label(for="title") Title
-			input(type="text", id="title", name="title", placeholder="Title", required=true)
+			input(type="text" id="title" name="title" placeholder="Title" required=true)
 			label(for="description") Description
-			textarea(name="description", id="description", placeholder="Description")
-			label(for="lat") Latitude
-			input(type="number", id="lat" name="lat", placeholder="Latitude", required=true)
-			label(for="lng") Longitude
-			input(type="number", id="lng" name="lng", placeholder="Longitude", required=true)
+			textarea(name="description" id="description" placeholder="Description")
 			label(for="type") Type
-			select(id="type", name="type", required=true)
+			select(id="type" name="type" required=true)
 				each val, index in {1: "APT", 2: "HOUSE"}
 					+selectBlock({
 						id: index,
 						name: val
 					})
 			label(for="category") Category
-			select(id="category", name="category", required=true)
+			select(id="category" name="category" required=true)
 				each val, index in {1: "HOUSE", 2: "OFFICE"}
 					+selectBlock({
 						id: index,
 						name: val
 					})
+
+	.form-container--map
+		input(type="text" id="keyword" name="keyword" placeholder="검색할 주소")
+		input(type="button" value="주소 검색" onclick="goPopup();")
+		label(for="roadAddr") 주소
+		input(type="text" id="roadAddr" name="roadAddr" placeholder="도로명" readonly)
+		input(type="text" id="jibunAddr" name="jibunAddr" placeholder="도로명" readonly)
+		input(type="text" id="detailAddr" name="detailAddr" placeholder="상세주소를 입력해주세요")
+		input(type="hidden" id="zipNo" name="zipNo" value="")
+		label(for="lat") Latitude
+		input(type="number" id="lat" name="lat" placeholder="Latitude" required=true)
+		label(for="lng") Longitude
+		input(type="number" id="lng" name="lng" placeholder="Longitude" required=true)
+		script(type="text/javascript" src=`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${env.NAVER_MAP_CLIENT_ID}&submodules=geocoder`)
+		div(id="map" style="width:30%;height:400px;") 주소 검색을 하시면 해당 위치가 지도에 표시됩니다.
+
 	.form-container--upload
 		label FileUpload
-		form.dropzone(action="/", id="placeFileForm" method="post", enctype="multipart/form-data")
+		form.dropzone(action="/" id="placeFileForm" method="post" enctype="multipart/form-data")
 			.fallback
-				input(type="file", name="placeFile[]", multiple)
+				input(type="file" name="placeFile[]" multiple)
 
 	.form-container--submit
-		input(type="submit", value="Upload Video", id="placeAdd")
-
-	script(src="/dist/dropzone/dropzone.js")
+		input(type="submit" value="Upload Video" id="placeAdd")
+		
 	script(src="/dist/jquery/jquery-3.4.1.min.js")
+	script(src="/dist/placeAdd.js")
+	script(src="/dist/dropzone/dropzone.js")
 	style
 		include ../../dist/dropzone/dropzone.css
 	script.
 		Dropzone.autoDiscover = false;
 		Dropzone.options.placeFileForm = {
-			//- parallelUploads: 5,
 			uploadMultiple: true,
 			maxFiles: 5,
 			maxFilesize: 100, // MB
 			autoProcessQueue: false,
 			addRemoveLinks: true,
-			acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF, .mp4"
+			acceptedFiles: ".jpeg.jpg.png.gif.JPEG.JPG.PNG.GIF .mp4"
 		};
-
-		const myDropzone = new Dropzone("form#placeFileForm", {
-			url: "/place/file-upload",
-			method:"post",
-			paramName: () => { return "placeFile[]"; }
-		})
-
 		$("#placeAdd").click(() => {
 			myDropzone.processQueue()
 			myDropzone.on("completemultiple", () => {
 				$("#placeAddForm").submit()
 			})
 		})
+		const myDropzone = new Dropzone("form#placeFileForm",{
+			url: "/place/file-upload",
+			method:"post",
+			paramName: () => { return "placeFile[]"; }
+		})
 
+		goPopup = () => {
+			var pop = window.open(
+				"/popup/jusoPopup",
+				"pop",
+				"width=570,height=420, scrollbars=yes"
+			) //경로는 시스템에 맞게 수정하여 사용
+		}
 		
+		$("#keyword").keydown((key) => {
+			if (key.keyCode == 13) {
+				goPopup()
+			}
+		})

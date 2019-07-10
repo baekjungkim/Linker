@@ -1,6 +1,8 @@
 import multer from "multer";
 import routes from "./routes";
 import utils from "./utils";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const localMiddleware = (req, res, next) => {
   res.locals.siteName = "Linker";
@@ -9,6 +11,7 @@ export const localMiddleware = (req, res, next) => {
     isAuthenticated: true,
     id: 1
   };
+  res.locals.env = process.env;
   next();
 };
 
