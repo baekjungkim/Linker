@@ -21,7 +21,6 @@ const PLACE_DETAIL = "/:id";
 const PLACE_EDIT = "/edit/:id";
 const PLACE_FILE_UPLOAD = "/file-upload";
 const MANAGE = "/manage";
-const JOSUPOP = "/popup/jusoPopup";
 
 const routes = {
   home: HOME,
@@ -47,8 +46,7 @@ const routes = {
     }
   },
   placeEdit: PLACE_EDIT,
-  manage: MANAGE,
-  jusoPopup: JOSUPOP
+  manage: MANAGE
 };
 
 export default routes;

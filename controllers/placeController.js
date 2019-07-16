@@ -25,13 +25,11 @@ export const getPlaceAdd = (req, res) => {
 };
 
 export const postPlaceAdd = (req, res) => {
-  const {
-    body: { title, description }
-  } = req;
-  console.log(title);
-  console.log(description);
+  const { body } = req;
+  console.log(body);
   // To do DB Save
-  res.redirect(routes.place + routes.placeAdd);
+  res.status(200).send({ message: "ya" });
+  // res.redirect(routes.place + routes.placeAdd);
 };
 
 export const placeFileUpload = (req, res) => {

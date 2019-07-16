@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { numberTypeAnnotation } from "babel-types";
 
 const PlaceSchema = new mongoose.Schema({
   user: {
@@ -17,6 +18,9 @@ const PlaceSchema = new mongoose.Schema({
       required: "File URL is required"
     }
   ],
+  propertyType: String,
+  deposit: Number,
+  price: Number,
   type: {
     type: String,
     required: "Type is required"
@@ -33,13 +37,19 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
     required: "Address is required"
   },
+  roadAddrEng: String,
+  jibunAddrEng: String,
   detailAddr: {
     type: String,
     required: "Detail Address is required"
   },
-  zipNo: {
+  postCode: {
+    type: String,
+    required: "Post Code is required"
+  },
+  zoneCode: {
     type: Number,
-    required: "Zip Code is required"
+    required: "Zone Code is required"
   },
   lat: {
     type: Number,

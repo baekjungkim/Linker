@@ -1,5 +1,25 @@
 extends layouts/main
 
 block content
-	p Home
+	.home-search
+		p.home-search__title
+			span 어떤 동네, 어떤 방
+		p.home-search__title
+			span 살고 싶으신가요?
+		.home-saerch__searchbar
+			form
+				input(type="text")
+				input(type="button" value="방찾기")
+
+	.home-recent-places
+		ul
+			li
+				a(href="#") 백중님의 촤근 본 방
+			li
+				a(href="#") 좋아요 방
+			
+		.placeDetail
+			
+	
+
 		

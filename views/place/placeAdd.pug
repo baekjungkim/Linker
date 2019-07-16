@@ -3,8 +3,8 @@ include ../mixins/selectBlock
 
 block content
 	include ../partials/manageHeader
-	.form-container
-		form(action=`${routes.place}${routes.placeAdd}` id="placeAddForm" method="post")
+	.form-container#jsPlaceAddContainer
+		form(id="placeAddForm" method="post")
 			label(for="title") Title
 			input(type="text" id="title" name="title" placeholder="Title" required=true)
 			label(for="description") Description
@@ -25,19 +25,20 @@ block content
 					})
 
 	.form-container--map
-		input(type="text" id="keyword" name="keyword" placeholder="검색할 주소")
-		input(type="button" value="주소 검색" onclick="goPopup();")
-		label(for="roadAddr") 주소
-		input(type="text" id="roadAddr" name="roadAddr" placeholder="도로명" readonly)
-		input(type="text" id="jibunAddr" name="jibunAddr" placeholder="도로명" readonly)
-		input(type="text" id="detailAddr" name="detailAddr" placeholder="상세주소를 입력해주세요")
-		input(type="hidden" id="zipNo" name="zipNo" value="")
-		label(for="lat") Latitude
-		input(type="number" id="lat" name="lat" placeholder="Latitude" required=true)
-		label(for="lng") Longitude
-		input(type="number" id="lng" name="lng" placeholder="Longitude" required=true)
-		script(type="text/javascript" src=`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${env.NAVER_MAP_CLIENT_ID}&submodules=geocoder`)
-		div(id="map" style="width:30%;height:400px;") 주소 검색을 하시면 해당 위치가 지도에 표시됩니다.
+		form(id="placeAddrForm" method="post")
+			label(for="roadAddr") 주소
+			input(type="text" id="roadAddr" name="addrKeyword" placeholder="도로명 주소" readonly)
+			input(type="hidden" id="roadAddrEng" name="roadAddrEng")
+			input(type="text" id="jibunAddr" name="addrKeyword" placeholder="지번 주소" readonly)
+			input(type="hidden" id="jibunAddrEng" name="jibunAddrEng")
+			input(type="button" value="주소 검색" id="addrPopupBtn")
+			input(type="text" id="detailAddr" name="detailAddr" placeholder="상세주소를 입력해주세요")
+			input(type="hidden" id="postCode" name="postCode")
+			input(type="hidden" id="zoneCode" name="zoneCode")
+			input(type="hidden" id="lat" name="lat" placeholder="Latitude" required=true)
+			input(type="hidden" id="lng" name="lng" placeholder="Longitude" required=true)
+			script(type="text/javascript" src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.DAUM_JAVASCRIPT_KEY}&libraries=services`)
+			div(id="map" style="width:30%;height:400px;") 주소 검색을 하시면 해당 위치가 지도에 표시됩니다.
 
 	.form-container--upload
 		label FileUpload
@@ -46,10 +47,10 @@ block content
 				input(type="file" name="placeFile[]" multiple)
 
 	.form-container--submit
-		input(type="submit" value="Upload Video" id="placeAdd")
+		input(type="submit" value="Upload Video" id="placeAddBtn")
 		
-	script(src="/static/placeAdd.js")
 	script(src="/static/dist/dropzone/dropzone.js")
+	script(src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false")
 	style
 		include ../../static/dist/dropzone/dropzone.css
 	script.
@@ -60,30 +61,5 @@ block content
 			maxFilesize: 100, // MB
 			autoProcessQueue: false,
 			addRemoveLinks: true,
-			acceptedFiles: ".jpeg.jpg.png.gif.JPEG.JPG.PNG.GIF .mp4"
+			acceptedFiles: "image/jpeg,image/png,image/gif"
 		};
-		$("#placeAdd").click(() => {
-			myDropzone.processQueue()
-			myDropzone.on("completemultiple", () => {
-				$("#placeAddForm").submit()
-			})
-		})
-		const myDropzone = new Dropzone("form#placeFileForm",{
-			url: "/place/file-upload",
-			method:"post",
-			paramName: () => { return "placeFile[]"; }
-		})
-
-		goPopup = () => {
-			var pop = window.open(
-				"/popup/jusoPopup",
-				"pop",
-				"width=570,height=420, scrollbars=yes"
-			) //경로는 시스템에 맞게 수정하여 사용
-		}
-		
-		$("#keyword").keydown((key) => {
-			if (key.keyCode == 13) {
-				goPopup()
-			}
-		})

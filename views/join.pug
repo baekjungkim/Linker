@@ -1,0 +1,46 @@
+extends layouts/main
+include mixins/selectBlock
+
+block content
+	.joinform-container
+		.login__icon
+			i.fas.fa-draw-polygon LINKER
+		form(action=routes.join method="post")
+			div
+				p 이름
+				input(type="text" name="name" placeholder="" required=true)
+			div
+				p 이메일
+				input(type="email" name="email" id="email1" placeholder="" required=true)
+				p.at @ 
+				//- input(type="email" name="email" id="email2" placeholder="" required=true)
+				select(id="email2" name="email2" required=true)
+					each val, index in {1: "naver.com", 2: "gmail.com"}
+						+selectBlock({
+							id: index,
+							name: val
+						})
+			div
+				p 비밀번호
+				input(type="password" name="password" placeholder="비밀번호" required=true)
+			div
+				p 비밀번호 확인
+				input(type="password" name="password2" placeholder="비밀번호 확인" required=true)
+			div
+				p 전화번호
+				//- input(type="tel1" name="tel" id="tel1")
+				select(id="tel1" name="tel1" required=true)
+					each val, index in {1: "010", 2: "011"}
+						+selectBlock({
+							id: index,
+							name: val
+						})
+				p.hipen -
+				input(type="tel" name="tel" id="tel2" required=true)
+				p.hipen -
+				input(type="tel" name="tel" id="tel3" required=true)
+				input(type="button" name="verifyBtn" id="verifyBtn" value="인증번호 요청")
+			div
+				input(type="number" name="verifyNumber" id="verifyNumber" required=true)
+				input(type="button" name="verifyBtn" id="verifyBtn" value="인증번호 확인")
+			input(type="submit" value="Join Now")

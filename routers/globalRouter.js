@@ -1,11 +1,11 @@
 import express from "express";
 import routes from "../routes";
-import { home, jusoPopup } from "../controllers/globalController";
+import { home, getJoin, getLogin } from "../controllers/globalController";
 
 const globalRouter = express.Router();
 
 globalRouter.get(routes.home, home);
-globalRouter.get(routes.jusoPopup, jusoPopup);
-globalRouter.post(routes.jusoPopup, jusoPopup);
+globalRouter.get(routes.join, getJoin);
+globalRouter.get(routes.login, getLogin);
 
 export default globalRouter;

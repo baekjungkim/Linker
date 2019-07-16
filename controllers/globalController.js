@@ -4,6 +4,6 @@ export const home = (req, res) => {
   res.render("home");
 };
 
-export const jusoPopup = (req, res) => {
-  res.render(POPUP_DIR + "/jusoPopup");
-};
+export const getJoin = (req, res) => res.render("join");
+
+export const getLogin = (req, res) => res.render("login");

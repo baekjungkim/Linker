@@ -1,0 +1,21 @@
+.footer {
+  // margin: 50px 0;
+  background-color: #4b4453;
+  padding-top: 50px;
+  border-top: 3px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .footer__icon {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .footer__text {
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}

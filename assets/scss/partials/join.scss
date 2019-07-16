@@ -1,0 +1,98 @@
+.joinform-container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  form {
+    width: 100%;
+    max-width: 25%;
+    margin-bottom: 25px;
+    div {
+      margin-bottom: 25px;
+      p {
+        margin: 0;
+        margin-bottom: 2px;
+      }
+      .at {
+        float: left;
+        text-align: center;
+        margin-top: 3%;
+        width: 5%;
+      }
+      .hipen {
+        float: left;
+        text-align: center;
+        margin-top: 3%;
+        width: 5%;
+      }
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+    textarea {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      margin-bottom: 25px;
+    }
+    input[type="submit"] {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    select {
+      height: 3.5em;
+      background-color: white;
+      border: 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  a {
+    color: blue;
+  }
+  .login__icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  #email1 {
+    float: left;
+    width: 45%;
+  }
+  #email2 {
+    width: 50%;
+  }
+
+  #tel1 {
+    float: left;
+    width: 14%;
+  }
+  #tel2 {
+    float: left;
+    width: 18%;
+  }
+  #tel3 {
+    float: left;
+    width: 18%;
+    margin-right: 5%;
+  }
+  #verifyNumber {
+    float: left;
+    width: 60%;
+    margin-right: 5%;
+  }
+  [name="verifyBtn"] {
+    width: 35%;
+    color: #3498db;
+    cursor: pointer;
+  }
+}
