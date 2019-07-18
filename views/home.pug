@@ -13,12 +13,14 @@ block content
 
 	.home-recent-places
 		ul
-			li
-				a(href="#") 백중님의 촤근 본 방
+			if user
+				li
+					a(href="#")=user.name
+					span 님
 			li
 				a(href="#") 좋아요 방
 			
-		.placeDetail
+		.place-detail
 			
 	
 

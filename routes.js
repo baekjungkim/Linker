@@ -11,6 +11,7 @@ const USER_DETAIL = "/:id";
 const USER_EDIT = "/edit";
 const NOTIFICATION = "/notification";
 const CHAT = "/chat";
+const SMS_REQUEST = "/smsRequest";
 
 // Place
 const PLACE = "/place";
@@ -31,6 +32,7 @@ const routes = {
   user: USER,
   userDetail: USER_DETAIL,
   userEdit: USER_EDIT,
+  smsRequest: SMS_REQUEST,
   notification: NOTIFICATION,
   chat: CHAT,
   place: PLACE,

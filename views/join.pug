@@ -2,45 +2,46 @@ extends layouts/main
 include mixins/selectBlock
 
 block content
-	.joinform-container
+	.joinform-container#jsJoinFormContainer
 		.login__icon
 			i.fas.fa-draw-polygon LINKER
-		form(action=routes.join method="post")
+		form(id="joinForm" method="post")
 			div
 				p 이름
-				input(type="text" name="name" placeholder="" required=true)
+				input(type="text" name="name" id="name" placeholder="" required=true)
 			div
 				p 이메일
-				input(type="email" name="email" id="email1" placeholder="" required=true)
+				input(type="text" name="email1" id="email1" placeholder="" required=true)
 				p.at @ 
 				//- input(type="email" name="email" id="email2" placeholder="" required=true)
 				select(id="email2" name="email2" required=true)
-					each val, index in {1: "naver.com", 2: "gmail.com"}
+					each val in {1: "naver.com", 2: "gmail.com"}
 						+selectBlock({
-							id: index,
+							id: val,
 							name: val
 						})
+				input(type="hidden" name="email" id="email")
 			div
 				p 비밀번호
-				input(type="password" name="password" placeholder="비밀번호" required=true)
+				input(type="password" name="password" id="password" placeholder="비밀번호" required=true)
 			div
 				p 비밀번호 확인
-				input(type="password" name="password2" placeholder="비밀번호 확인" required=true)
+				input(type="password" name="password2" id="password2" placeholder="비밀번호 확인" required=true)
 			div
-				p 전화번호
-				//- input(type="tel1" name="tel" id="tel1")
-				select(id="tel1" name="tel1" required=true)
-					each val, index in {1: "010", 2: "011"}
+				p 핸드폰번호
+				select(id="tel1" name="tel1" )
+					each val in {010: "010", 011: "011"}
 						+selectBlock({
-							id: index,
+							id: val,
 							name: val
 						})
 				p.hipen -
-				input(type="tel" name="tel" id="tel2" required=true)
+				input(type="text" name="tel" id="tel2" maxlength=4)
 				p.hipen -
-				input(type="tel" name="tel" id="tel3" required=true)
-				input(type="button" name="verifyBtn" id="verifyBtn" value="인증번호 요청")
+				input(type="text" name="tel" id="tel3" maxlength=4)
+				input(type="button" name="verifyBtn" id="reqVerify" value="인증번호 요청")
+				input(type="hidden" name="phoneNumber" id="phoneNumber")
 			div
-				input(type="number" name="verifyNumber" id="verifyNumber" required=true)
+				input(type="number" name="verifyNumber" id="verifyNumber")
 				input(type="button" name="verifyBtn" id="verifyBtn" value="인증번호 확인")
-			input(type="submit" value="Join Now")
+			input(type="button" id="joinBtn" value="회원가입")

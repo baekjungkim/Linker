@@ -1,15 +1,15 @@
 extends layouts/main
 
 block content
-	.loginform-container
+	.loginform-container#jsLoginFormContainer
 		.login__icon
 			i.fas.fa-draw-polygon LINKER
-		form(action=routes.login method="post")
+		form(id="loginForm" method="post")
 			div
-				input(type="email" name="email" placeholder="이메일" required=true)
+				input(type="email" name="email" id="email" placeholder="이메일" required=true)
 			div
-				input(type="password" name="password" placeholder="비밀번호" required=true)
-			input(type="submit" value="로그인")
+				input(type="password" name="password" id="password" placeholder="비밀번호" required=true)
+			input(type="button" id="loginBtn" value="로그인")
 		p 아직 회원이 아니신가요? 
 			a(href=routes.join) 이메일로 회원가입
 		include partials/socialLogin
