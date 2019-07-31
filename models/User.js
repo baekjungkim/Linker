@@ -6,8 +6,9 @@ const UserSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   facebookId: Number,
-  instaId: Number,
   kakaoId: Number,
+  naverId: Number,
+  googleId: Number,
   phoneNumber: String,
   country: String,
   createAt: {

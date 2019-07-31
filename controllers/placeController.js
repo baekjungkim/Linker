@@ -1,5 +1,6 @@
 import routes from "../routes";
 import Place from "../models/Place";
+import { positions } from "../place";
 
 const PLACE_DIR = "place/";
 
@@ -10,6 +11,27 @@ export const manage = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.render(PLACE_DIR + "manage", { places: [] });
+  }
+};
+
+export const getSearch = async (req, res) => {
+  const {
+    query: { keyword }
+  } = req;
+  res.render(PLACE_DIR + "placeSearch", { keyword });
+};
+
+export const postSearch = async (req, res) => {
+  const {
+    query: { keyword }
+  } = req;
+  try {
+    console.log(positions);
+    // videos = await Video.find({ title: { $regex: keyword, $options: "i" } });
+    res.json({ places: positions });
+  } catch (error) {
+    console.log(error);
+    res.json({ places: [] });
   }
 };
 

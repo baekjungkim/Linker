@@ -1,0 +1,32 @@
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 0.1%;
+}
+
+.map-container__search {
+  position: absolute;
+  right: 2%;
+  top: 1%;
+  border-radius: 2px;
+  z-index: 1;
+  // padding: 1%;
+  width: 16%;
+  background: rgba(255, 255, 255, 0.7);
+  input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  i {
+    position: relative;
+    z-index: 1;
+    left: -25px;
+    top: 1px;
+    color: #7b7b7b;
+    cursor: pointer;
+    width: 0;
+  }
+}

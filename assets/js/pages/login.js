@@ -40,11 +40,20 @@ function loginSubmit() {
     data
   })
     .then(function(response) {
-      location.href = routes.home;
+      if (getCookie("prevUrl")) {
+        location.href = decodeURIComponent(getCookie("prevUrl"));
+      } else {
+        location.href = routes.home;
+      }
     })
     .catch(function(error) {
       toastr.error("이메일 또는 비밀번호를 확인해 주세요.");
     });
+}
+
+function getCookie(name) {
+  var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+  return value ? value[2] : null;
 }
 
 function init() {

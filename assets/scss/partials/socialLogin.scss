@@ -1,28 +1,43 @@
 .social-login {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   width: 23%;
   button {
-    width: 100%;
+    width: 40%;
+    height: 40%;
     max-width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    &:not(:last-child) {
+    // &:not(:last-child) {
+    //   // margin-right: 15px;
+    // }
+    &:nth-child(odd) {
       margin-right: 15px;
     }
+    margin-bottom: 20px;
     span {
       margin-right: 10px;
       font-size: 15px;
     }
   }
-  .social-login--github {
-    background-color: #6cc644;
-    color: white;
-  }
   .social-login--facebook {
     background-color: #3c5a99;
     color: white;
+  }
+  .social-login--kakaotalk {
+    background-color: #f7e319;
+    color: black;
+  }
+  .social-login--naver {
+    background-color: #02c300;
+    color: white;
+  }
+  .social-login--google {
+    background-color: white;
+    color: black;
+    border: 1px solid;
   }
 }

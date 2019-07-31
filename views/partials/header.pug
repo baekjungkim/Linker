@@ -5,16 +5,16 @@ header.header
 				i.fas.fa-draw-polygon
 		.header__column
 			ul
+				li
+					a(href=`${routes.place}${routes.search}`) 공간 찾기
+				li
+					a(href=`${routes.place}${routes.manage}`) 공간 관리
 				if !user
-					li
-						a(href=`${routes.place}${routes.manage}`) 공간 관리
 					li
 						a(href=routes.join) 회원가입
 					li
 						a(href=routes.login) 로그인
 				else 
-					li
-						a(href=`${routes.place}${routes.manage}`) 공간 관리
 					li
 						a(href=routes.user) 정보수정
 					li

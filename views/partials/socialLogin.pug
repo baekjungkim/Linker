@@ -1,9 +1,20 @@
 .social-login
-    button.social-login--github
-        span
-            i.fab.fa-github
-        | Github 로그인
     button.social-login--facebook
-        span
-            i.fab.fa-facebook
-        | Facebook 로그인
+        a(href=routes.facebook)
+            span
+                i.fab.fa-facebook
+            | Facebook 로그인
+    button.social-login--kakaotalk
+        a(href=routes.kakao)
+            span
+                i.fas.fa-comment
+            | Kakao 로그인
+    button.social-login--naver
+        a(href=routes.naver)
+            span
+            |N Naver 로그인
+    button.social-login--google
+        a(href=routes.google)
+            span
+                i.fab.fa-google
+            | Google 로그인

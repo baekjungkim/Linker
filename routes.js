@@ -23,6 +23,22 @@ const PLACE_EDIT = "/edit/:id";
 const PLACE_FILE_UPLOAD = "/file-upload";
 const MANAGE = "/manage";
 
+// Facebook
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+
+// Kakao
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+
+// Naver
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK = "/auth/naver/callback";
+
+// Google
+const GOOGLE = "/auth/google";
+const GOOGLE_CALLBACK = "/auth/google/callback";
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -48,7 +64,15 @@ const routes = {
     }
   },
   placeEdit: PLACE_EDIT,
-  manage: MANAGE
+  manage: MANAGE,
+  facebook: FACEBOOK,
+  facebookCallBack: FACEBOOK_CALLBACK,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK,
+  naver: NAVER,
+  naverCallback: NAVER_CALLBACK,
+  google: GOOGLE,
+  googleCallback: GOOGLE_CALLBACK
 };
 
 export default routes;

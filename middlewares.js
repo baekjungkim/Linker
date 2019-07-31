@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const localMiddleware = (req, res, next) => {
+  if (req.originalUrl !== "/login") {
+    res.clearCookie("prevUrl");
+  }
   res.locals.siteName = "Linker";
   res.locals.routes = routes;
   res.locals.user = req.user || null;
@@ -27,8 +30,10 @@ export const onlyPublic = (req, res, next) => {
 
 export const onlyPrivate = (req, res, next) => {
   if (req.user) {
+    res.clearCookie("prevUrl");
     next();
   } else {
-    res.redirect(routes.home);
+    res.cookie("prevUrl", req.originalUrl);
+    res.redirect(routes.login);
   }
 };

@@ -1,0 +1,14 @@
+extends ../layouts/searchLayout
+
+block content
+	.map-container#jsMapContainer
+		#map(style="width:100%;height:100%;position:relative;overflow:hidden;")
+		.map-container__search#menu_wrap
+			form(action=`${routes.place}${routes.search}`)
+				input(type="text" id="keyword" name="keyword" placeholder="공간을 검색하세요." value=`${keyword || ""}`)
+				i.fas.fa-search-location
+			hr
+			//- ul#placesList
+			//- #pagination
+
+	script(type="text/javascript" src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.DAUM_JAVASCRIPT_KEY}&libraries=services,clusterer`)

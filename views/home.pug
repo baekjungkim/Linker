@@ -1,15 +1,14 @@
 extends layouts/main
 
 block content
-	.home-search
-		p.home-search__title
-			span 어떤 동네, 어떤 방
-		p.home-search__title
-			span 살고 싶으신가요?
-		.home-saerch__searchbar
-			form
-				input(type="text")
-				input(type="button" value="방찾기")
+	.home-search__wrapper
+		.home-search__title
+			span 공간을
+			span 공유하세요
+		.home-search__searchbar
+			form(action=`${routes.place}${routes.search}` id="placeSearchForm")
+				input(type="text" placeholder="공간을 검색하세요." name="keyword")
+				i.fas.fa-search-location
 
 	.home-recent-places
 		ul
